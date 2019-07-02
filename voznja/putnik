@@ -1,0 +1,30 @@
+public class Putnik extends Covek {
+	private int novac;
+	
+	public Putnik(String ime, double tezina, int novac) {
+		super (ime, tezina);
+		this.novac = novac;
+	}
+	
+	public boolean dodajNovac (int n) {
+		if (n < 0) return false;
+		this.novac += n;
+		return true;
+	}
+	
+	public boolean oduzmiNovac (int n) {
+		if (n < 0 || this.novac < n) return false;
+		this.novac -= n;
+		return true;
+	}
+	
+	public int getNovac() {
+	return this.novac;
+	}
+	
+	@Override
+	public String toString () {
+		return ("Putnik["+this.novac+"]-["+super.getId()+"]"+super.getIme()+":{"+super.getTezina());
+	}
+
+}
