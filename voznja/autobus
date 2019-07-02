@@ -1,0 +1,89 @@
+public class Autobus {
+	private String naziv;
+	private Vozac vozac;
+	private int cenaKarte;
+	Putnik [] mesto;
+	
+	
+	public Autobus (String naziv, int cenaKarte, int brPutnika) {
+		this.naziv = naziv;
+		this.cenaKarte = cenaKarte;
+		mesto = new Putnik[brPutnika];
+	}
+	
+	public boolean postaviPutnika(Putnik p, int i) {
+		if (i >= this.mesto.length || i < 0)
+			return false;
+		if (mesto[i] != null)
+			return false;
+		for (int j = 0; j < mesto.length; j++) {
+			if (mesto[j] != null && mesto[j]==p) {
+				return false;
+			}
+		}
+		mesto[i] = p;
+		return true;
+	}
+
+	public void ukloniPutnika(int i) {
+		if (i >= this.mesto.length || i < 0)
+			return;
+		if (mesto[i] == null) {
+			return;
+		}
+		mesto[i] = null;
+	}
+
+	public void ukloniPutnika(Putnik p) {
+		for (int i = 0; i < mesto.length; i++) {
+			if (mesto[i] != null) {
+				if (mesto[i] == p) {
+					mesto[i] = null;
+					return;
+				}
+			}
+		}
+	}
+		
+		public void dodajVozaca(Vozac vozac) {
+			if(vozac!=this.vozac)this.vozac=vozac;
+		}
+		
+		public void ukloniVozaca (Vozac vozac) {
+			if (vozac != null) {
+				if (vozac == vozac) {
+					vozac = null;
+					return;
+				}
+			}
+		}
+		
+		public void naplatiKarte () {
+			if (vozac != null) {
+				for (int i = 0; i < this.mesto.length; i++) {
+				if (mesto[i].getNovac()>this.cenaKarte) {
+				this.mesto[i].oduzmiNovac(this.cenaKarte);
+			}
+				else {
+					mesto[i] = null;
+				}
+			}
+			}
+		}
+	@Override
+	public String toString() {
+		String s="[";
+		if (this.vozac != null) s+="\n"+this.vozac;
+		
+		s = this.naziv;
+		s+="]{";
+		s+=this.cenaKarte;
+		s+="}";
+		for (int i = 0; i < mesto.length; i++) {
+			if(mesto[i]!=null)s+="\n"+mesto[i];
+		}
+		s+="]";
+		return s;
+	}
+
+}
