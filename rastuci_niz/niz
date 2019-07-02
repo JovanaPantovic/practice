@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Zadatak1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println ("Unesi broj elemenata niza: ");
+		int n = sc.nextInt ();
+		int[] a= new int[n];
+		ucitajNiz (a);
+		rastuciNiz (a);
+		
+
+	}
+		static void ucitajNiz(int[] n) {
+		Scanner sc = new Scanner(System.in);
+		for (int i = 0; i < n.length; i++) {
+			System.out.println("Unesi " + i + " element: ");
+			n[i] = sc.nextInt();
+		}
+
+}
+		static void rastuciNiz (int a[]) {
+			int i = 1;
+			while (i<a.length) {
+				if (a [i] > a [i - 1]) {
+					System.out.println ("Niz je rastuci!"); 
+					break;
+				}
+				else {
+					System.out.println("Niz nije rastuci!");
+					break;
+				}
+				
+			}
+			
+		}
+}
+		
